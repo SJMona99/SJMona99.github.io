@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mona Sajedi — Portfolio</title>
+  <meta name="description" content="Portfolio of Mona Sajedi — computational design, visualization, and interactive systems.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="container nav">
+    <a class="logo" href="/">Mona<span>Sajedi</span></a>
+    <nav>
+      <a href="#work">Work</a>
+      <a href="#about">About</a>
+      <a href="#cv">CV</a>
+      <a href="#contact" class="btn">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero container">
+    <h1>Computational Designer & Visualizer</h1>
+    <p>I design interactive systems, architectural visualizations, and performance‑driven workflows that connect people, space, and technology.</p>
+    <div class="cta">
+      <a class="btn" href="#work">See Projects</a>
+      <a class="btn outline" href="#contact">Get in Touch</a>
+    </div>
+  </section>
+
+  <section id="work" class="container section">
+    <h2>Selected Work</h2>
+    <div class="grid">
+      <a class="card" href="projects/lubet.html">
+        <img src="assets/lubet-placeholder.jpg" alt="The Lubet — kinetic installation">
+        <div class="card-body">
+          <h3>The Lubet</h3>
+          <p>Interactive kinetic installation translating human motion to mechanical movement (Arduino + real‑time control).</p>
+          <span class="pill">Installation</span>
+          <span class="pill">Computation</span>
+        </div>
+      </a>
+
+      <div class="card">
+        <img src="assets/visualization-placeholder.jpg" alt="Architectural visualization">
+        <div class="card-body">
+          <h3>Generative Façade Studies</h3>
+          <p>Parametric façade system optimized for daylight and material efficiency (Rhino/Grasshopper).</p>
+          <span class="pill">Parametric</span>
+          <span class="pill">Optimization</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="assets/vr-placeholder.jpg" alt="VR experience">
+        <div class="card-body">
+          <h3>VR Spatial Narrative</h3>
+          <p>Immersive Unreal Engine walkthrough exploring light, scale, and spatial acoustics.</p>
+          <span class="pill">Unreal</span>
+          <span class="pill">VR</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about" class="container section">
+    <h2>About</h2>
+    <p>Mona Sajedi is a computational designer with a background in architecture, industrial engineering, and advanced computational design. Her work explores how computation, visualization, and interaction can shape responsive environments and high‑performing spaces.</p>
+  </section>
+
+  <section id="cv" class="container section">
+    <h2>CV Highlights</h2>
+    <ul class="cv">
+      <li><strong>Illinois Institute of Technology</strong> — M.S. Architecture</li>
+      <li><strong>Design Morphine (UACG)</strong> — M.Sc. Advanced Computational Design</li>
+      <li><strong>Teaching Assistant</strong> — computational design, digital modeling, visualization</li>
+      <li><strong>Tools</strong> — Rhino/Grasshopper, Revit, Blender, Unreal, Arduino, Python</li>
+    </ul>
+    <p>For full CV, <a href="assets/Mona_Sajedi_CV.pdf" target="_blank" rel="noopener">download PDF</a> (replace with your file).</p>
+  </section>
+
+  <section id="contact" class="container section">
+    <h2>Contact</h2>
+    <p>Email me at <a href="mailto:youremail@example.com">youremail@example.com</a> or use the form below.</p>
+    <form action="https://formspree.io/f/your-id" method="POST" class="contact-form">
+      <label>
+        <span>Name</span>
+        <input type="text" name="name" required>
+      </label>
+      <label>
+        <span>Email</span>
+        <input type="email" name="email" required>
+      </label>
+      <label>
+        <span>Message</span>
+        <textarea name="message" rows="5" required></textarea>
+      </label>
+      <button type="submit" class="btn">Send</button>
+    </form>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <p>© <span id="year"></span> Mona Sajedi. All rights reserved.</p>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
