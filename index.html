@@ -1,116 +1,249 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Mona Sajedi — Portfolio</title>
-  <meta name="description" content="Portfolio of Mona Sajedi — computational design, visualization, and interactive systems.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mona Sajedi — Responsive Architecture & Parametric Design</title>
+  <meta name="description" content="Computational & Parametric Designer exploring responsive architecture, Emotion AI, and material intelligence." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet" />
+  <style>
+    :root{
+      --bg:#0b0b0c; --ink:#e8e9eb; --muted:#a9adb7; --accent:#8ea6ff; --card:#121215; --line:#1b1b1f;
+      --max:1200px; --radius:22px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:var(--bg);color:var(--ink);font-family:"Plus Jakarta Sans",Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
+    a{color:inherit}
+    .wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
+    /* Header */
+    header{position:fixed;inset:0 0 auto 0;height:64px;display:flex;align-items:center;z-index:50;backdrop-filter:saturate(120%) blur(8px)}
+    header .bar{display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line);background:rgba(11,11,12,.45);height:64px}
+    .logo{font-weight:800;letter-spacing:.2px}
+    nav a{opacity:.8;text-decoration:none;margin-left:18px}
+    nav a:hover{opacity:1}
+    .pill{border:1px solid var(--line);border-radius:999px;padding:6px 12px;font-size:.82rem;opacity:.85}
+    /* Hero */
+    .hero{min-height:92vh;display:grid;place-items:end;position:relative;overflow:hidden}
+    .hero video,.hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:contrast(1.1) saturate(1.05) brightness(.72)}
+    .veil{position:absolute;inset:0;background:radial-gradient(120% 120% at 50% 60%, rgba(11,11,12,0) 0%, rgba(11,11,12,.4) 55%, rgba(11,11,12,.88) 100%)}
+    .hero .copy{position:relative;z-index:1;padding-bottom:12vh}
+    .kicker{text-transform:uppercase;letter-spacing:.18em;color:var(--muted);font-size:.8rem}
+    h1{font-size:clamp(2.2rem,6vw,4.5rem);line-height:1.06;margin:.35em 0 .2em}
+    .sub{max-width:760px;color:#cfd3db;font-weight:400}
+    .cta{margin-top:22px;display:flex;gap:12px}
+    .btn{display:inline-flex;align-items:center;gap:8px;padding:12px 16px;border-radius:12px;border:1px solid var(--line);background:transparent;text-decoration:none}
+    .btn:hover{border-color:#2a2a31}
+    .btn.primary{background:linear-gradient(180deg,#171722,#0f1016);border-color:#2a2a31}
+    /* Marquee */
+    .marquee{overflow:hidden;border-block:1px solid var(--line);background:#0d0e13}
+    .marquee .track{display:flex;gap:32px;white-space:nowrap;animation:scroll 30s linear infinite;padding:12px 0}
+    @keyframes scroll{to{transform:translateX(-50%)}}
+    .marquee b{opacity:.9}
+    /* Sections */
+    section{padding:80px 0}
+    h2{font-size:clamp(1.4rem,2.8vw,2.2rem);margin:0 0 18px}
+    p.lead{color:#c9ced8;max-width:880px}
+    /* Grid */
+    .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:18px}
+    .card{grid-column:span 6;background:var(--card);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;position:relative;transition:transform .24s ease}
+    .card:hover{transform:translateY(-4px)}
+    .card.media{grid-column:span 12}
+    .card img,.card video{width:100%;height:380px;object-fit:cover;display:block}
+    .card .body{padding:16px 18px}
+    .tag{display:inline-block;border:1px solid var(--line);border-radius:999px;padding:4px 10px;margin-right:8px;margin-top:8px;font-size:.78rem;color:#b8bdc8}
+    /* About */
+    .about{display:grid;grid-template-columns:1.2fr .8fr;gap:32px;align-items:start}
+    .about .box{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:22px}
+    /* Footer */
+    footer{border-top:1px solid var(--line);padding:28px 0 60px;color:#a0a5b0}
+    /* Reveal */
+    .reveal{opacity:0;transform:translateY(12px);transition:all .6s ease}
+    .reveal.show{opacity:1;transform:none}
+    @media (max-width:980px){
+      .grid{grid-template-columns:repeat(6,1fr)}
+      .card{grid-column:span 6}
+      .card img,.card video{height:300px}
+      .about{grid-template-columns:1fr;gap:18px}
+      .hero .copy{padding-bottom:8vh}
+    }
+  </style>
 </head>
 <body>
-<header class="site-header">
-  <div class="container nav">
-    <a class="logo" href="/">Mona<span>Sajedi</span></a>
-    <nav>
-      <a href="#work">Work</a>
-      <a href="#about">About</a>
-      <a href="#cv">CV</a>
-      <a href="#contact" class="btn">Contact</a>
-    </nav>
-  </div>
-</header>
+  <header>
+    <div class="wrap bar">
+      <div class="logo">Mona Sajedi</div>
+      <nav>
+        <a href="#work">Work</a>
+        <a href="#research">Research</a>
+        <a href="#about">About</a>
+        <a class="pill" href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
 
-<main>
-  <section class="hero container">
-    <h1>Computational Designer & Visualizer</h1>
-    <p>I design interactive systems, architectural visualizations, and performance‑driven workflows that connect people, space, and technology.</p>
-    <div class="cta">
-      <a class="btn" href="#work">See Projects</a>
-      <a class="btn outline" href="#contact">Get in Touch</a>
+  <!-- HERO -->
+  <section class="hero" id="top" aria-label="Hero">
+    <!-- Replace with your MP4 background or a still image -->
+    <video autoplay muted playsinline loop poster="assets/hero-still.jpg">
+      <source src="assets/hero-bg.mp4" type="video/mp4" />
+    </video>
+    <div class="veil"></div>
+    <div class="wrap copy">
+      <span class="kicker">Responsive Architecture • Parametric Design</span>
+      <h1>Responsive Architecture | Where AI Meets Human Emotion</h1>
+      <p class="sub">Exploring how computational design, affective intelligence, and material performance shape environments that sense, interpret, and respond to human behavior.</p>
+      <div class="cta">
+        <a class="btn primary" href="#work">See Work</a>
+        <a class="btn" href="#about">About</a>
+      </div>
     </div>
   </section>
 
-  <section id="work" class="container section">
+  <!-- MARQUEE -->
+  <div class="marquee" aria-hidden="true">
+    <div class="track wrap">
+      <span>Parametric Systems</span>
+      <b>• Emotion AI</b>
+      <span>• Generative Design</span>
+      <b>• Material Intelligence</b>
+      <span>• Interactive Installations</span>
+      <b>• Unreal / Rhino / Grasshopper / Revit</b>
+      <span>• Visualization</span>
+      <b>• Arduino / Sensors</b>
+      <span>• BIM Workflows</span>
+      <b>• Data-Driven Space</b>
+    </div>
+  </div>
+
+  <!-- WORK -->
+  <section id="work" class="wrap">
     <h2>Selected Work</h2>
+    <p class="lead">A selection of installations, prototypes, and studies that merge computation, sensing, and spatial experience.</p>
     <div class="grid">
-      <a class="card" href="projects/lubet.html">
-        <img src="assets/lubet-placeholder.jpg" alt="The Lubet — kinetic installation">
-        <div class="card-body">
-          <h3>The Lubet</h3>
-          <p>Interactive kinetic installation translating human motion to mechanical movement (Arduino + real‑time control).</p>
-          <span class="pill">Installation</span>
-          <span class="pill">Computation</span>
+      <a class="card reveal" href="projects/lubet.html">
+        <img src="assets/lubet-placeholder.jpg" alt="The Lubet kinetic installation" />
+        <div class="body">
+          <h3>The Lubet — Human-in-the-Loop Kinetics</h3>
+          <p>Interactive installation translating body movement into real-time mechanical actuation (Arduino + servo arrays).</p>
+          <span class="tag">Installation</span><span class="tag">Computation</span>
         </div>
       </a>
 
-      <div class="card">
-        <img src="assets/visualization-placeholder.jpg" alt="Architectural visualization">
-        <div class="card-body">
+      <div class="card reveal">
+        <video muted loop playsinline poster="assets/facade-still.jpg" onmouseenter="this.play()" onmouseleave="this.pause()">
+          <source src="assets/facade-loop.mp4" type="video/mp4" />
+        </video>
+        <div class="body">
           <h3>Generative Façade Studies</h3>
-          <p>Parametric façade system optimized for daylight and material efficiency (Rhino/Grasshopper).</p>
-          <span class="pill">Parametric</span>
-          <span class="pill">Optimization</span>
+          <p>Parametric system optimized for daylight, material efficiency, and visual porosity (Rhino/Grasshopper).</p>
+          <span class="tag">Parametric</span><span class="tag">Optimization</span>
         </div>
       </div>
 
-      <div class="card">
-        <img src="assets/vr-placeholder.jpg" alt="VR experience">
-        <div class="card-body">
+      <div class="card reveal">
+        <img src="assets/vr-placeholder.jpg" alt="VR spatial narrative" />
+        <div class="body">
           <h3>VR Spatial Narrative</h3>
-          <p>Immersive Unreal Engine walkthrough exploring light, scale, and spatial acoustics.</p>
-          <span class="pill">Unreal</span>
-          <span class="pill">VR</span>
+          <p>Unreal Engine walkthrough exploring light, scale, and acoustic atmosphere in responsive space.</p>
+          <span class="tag">Unreal</span><span class="tag">VR</span>
+        </div>
+      </div>
+
+      <div class="card reveal media">
+        <img src="assets/research-strip.jpg" alt="Research collage" />
+        <div class="body">
+          <h3>Responsive Route — Research</h3>
+          <p>Investigating Emotion AI and affective computing to enable spaces that read biometrics and adapt material behavior.</p>
+          <span class="tag">Research</span><span class="tag">Affective Computing</span><span class="tag">Sensors</span>
         </div>
       </div>
     </div>
   </section>
 
-  <section id="about" class="container section">
+  <!-- RESEARCH -->
+  <section id="research" class="wrap">
+    <h2>Research</h2>
+    <div class="about">
+      <div class="box reveal">
+        <p><strong>Responsive Route</strong> examines how Emotion AI and material intelligence can transform architecture into a living interface—spaces that sense, interpret, and adapt to human behavior and feeling.</p>
+        <p>Methods include biometric sensing (heart rate, EDA), parametric systems, and real-time control to prototype emotionally aware environments.</p>
+      </div>
+      <div class="box reveal">
+        <p><strong>Focus</strong></p>
+        <ul>
+          <li>Parametric & Generative Design</li>
+          <li>Affective Computing (Emotion AI)</li>
+          <li>Interactive Systems & Sensors</li>
+          <li>Real-time Visualization (Unreal)</li>
+          <li>Material Performance</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="wrap">
     <h2>About</h2>
-    <p>Mona Sajedi is a computational designer with a background in architecture, industrial engineering, and advanced computational design. Her work explores how computation, visualization, and interaction can shape responsive environments and high‑performing spaces.</p>
+    <div class="about">
+      <div class="box reveal">
+        <p>
+          I am a Computational and Parametric Designer exploring the intersection of architecture, artificial intelligence, and human emotion.
+          My current research, <strong>Responsive Route</strong>, investigates how Emotion AI and material intelligence can transform architecture into a living interface—spaces that sense, interpret, and adapt to human behavior and feeling.
+        </p>
+        <p>
+          With dual master's degrees in Architecture and Advanced Computational Design, my work bridges design logic, data-driven systems, and aesthetic expression. I use parametric and generative design methods to prototype environments that respond to biometric and environmental data, creating meaningful emotional connections between people and space.
+        </p>
+        <p>
+          By combining computational workflows with affective computing and material performance, I aim to push the boundaries of responsive architecture—crafting spaces that not only function, but <em>feel</em>.
+        </p>
+      </div>
+      <div class="box reveal">
+        <p><strong>Tools</strong></p>
+        <p>Rhino / Grasshopper • Revit • Unreal • Blender • Houdini • KeyShot • Python • Arduino • Adobe Suite</p>
+        <p><strong>Download CV</strong><br>
+          <a href="assets/Mona_Sajedi_CV.pdf" target="_blank" rel="noopener">Mona_Sajedi_CV.pdf</a>
+        </p>
+      </div>
+    </div>
   </section>
 
-  <section id="cv" class="container section">
-    <h2>CV Highlights</h2>
-    <ul class="cv">
-      <li><strong>Illinois Institute of Technology</strong> — M.S. Architecture</li>
-      <li><strong>Design Morphine (UACG)</strong> — M.Sc. Advanced Computational Design</li>
-      <li><strong>Teaching Assistant</strong> — computational design, digital modeling, visualization</li>
-      <li><strong>Tools</strong> — Rhino/Grasshopper, Revit, Blender, Unreal, Arduino, Python</li>
-    </ul>
-    <p>For full CV, <a href="assets/Mona_Sajedi_CV.pdf" target="_blank" rel="noopener">download PDF</a> (replace with your file).</p>
-  </section>
-
-  <section id="contact" class="container section">
+  <!-- CONTACT -->
+  <section id="contact" class="wrap">
     <h2>Contact</h2>
-    <p>Email me at <a href="mailto:youremail@example.com">youremail@example.com</a> or use the form below.</p>
-    <form action="https://formspree.io/f/your-id" method="POST" class="contact-form">
-      <label>
-        <span>Name</span>
-        <input type="text" name="name" required>
-      </label>
-      <label>
-        <span>Email</span>
-        <input type="email" name="email" required>
-      </label>
-      <label>
-        <span>Message</span>
-        <textarea name="message" rows="5" required></textarea>
-      </label>
-      <button type="submit" class="btn">Send</button>
-    </form>
+    <div class="about">
+      <div class="box reveal">
+        <p>Email: <a href="mailto:youremail@example.com">youremail@example.com</a></p>
+        <form action="https://formspree.io/f/your-id" method="POST" class="contact-form" style="display:grid;gap:12px;max-width:520px">
+          <label>Name <input type="text" name="name" required style="width:100%;padding:12px;border-radius:12px;border:1px solid var(--line);background:#0e0f13;color:var(--ink)"></label>
+          <label>Email <input type="email" name="email" required style="width:100%;padding:12px;border-radius:12px;border:1px solid var(--line);background:#0e0f13;color:var(--ink)"></label>
+          <label>Message <textarea name="message" rows="5" required style="width:100%;padding:12px;border-radius:12px;border:1px solid var(--line);background:#0e0f13;color:var(--ink)"></textarea></label>
+          <button class="btn primary" type="submit">Send</button>
+        </form>
+      </div>
+      <div class="box reveal">
+        <p><strong>Links</strong></p>
+        <p><a href="https://www.linkedin.com/in/SJ-Mona" target="_blank" rel="noopener">LinkedIn</a> • <a href="https://github.com/SJMona99" target="_blank" rel="noopener">GitHub</a></p>
+      </div>
+    </div>
   </section>
-</main>
 
-<footer class="site-footer">
-  <div class="container">
-    <p>© <span id="year"></span> Mona Sajedi. All rights reserved.</p>
-  </div>
-</footer>
+  <footer>
+    <div class="wrap">
+      © <span id="y"></span> Mona Sajedi — Responsive Architecture & Parametric Design
+    </div>
+  </footer>
 
-<script src="script.js"></script>
+  <script>
+    // Year
+    document.getElementById('y').textContent=new Date().getFullYear();
+    // Reveal on scroll
+    const obs=new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('show'); obs.unobserve(e.target); } });
+    },{threshold:.15});
+    document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+  </script>
 </body>
 </html>
