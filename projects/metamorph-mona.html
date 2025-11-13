@@ -6,7 +6,6 @@
   <title>Metamorph M.O.N.A. — Hyper Visual Composition</title>
   <meta name="description" content="Metamorph M.O.N.A. — letterforms as spatial prototypes in motion, exploring atmosphere, reflection, and responsive geometry." />
 
-  <!-- Same fonts + base style language as your main site -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet" />
@@ -89,7 +88,6 @@
       margin-top:18px;
     }
 
-    /* Layout for hero images + text */
     .project-layout{
       display:grid;
       grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);
@@ -128,7 +126,6 @@
     .meta-block p{margin-bottom:6px}
     .meta-block p.small{font-size:.85rem;color:var(--muted)}
 
-    /* Gallery */
     .gallery{
       margin-top:24px;
       display:grid;
@@ -152,7 +149,6 @@
       text-align:center;
     }
 
-    /* Reveal animation */
     .reveal{opacity:0;transform:translateY(18px);transition:all .6s ease}
     .reveal.show{opacity:1;transform:none}
 
@@ -177,8 +173,8 @@
 
   <header>
     <div class="wrap">
-      <!-- If this file lives in /projects, change href to ../index.html#work -->
-      <a class="back" href="index.html#work">← Back to Work</a>
+      <!-- file lives in /projects, so go back to root -->
+      <a class="back" href="../index.html#work">← Back to Work</a>
     </div>
   </header>
 
@@ -196,8 +192,8 @@
       <div class="project-layout">
         <!-- HERO IMAGES -->
         <div class="hero-pair reveal">
-          <img src="cover1.png" alt="Metamorph M.O.N.A main composition" />
-          <img src="cover2.png" alt="Metamorph M.O.N.A alternate composition" />
+          <img src="../assets/projects/metamorph-mona/cover1.png" alt="Metamorph M.O.N.A main composition" />
+          <img src="../assets/projects/metamorph-mona/cover2.png" alt="Metamorph M.O.N.A alternate composition" />
         </div>
 
         <!-- TEXT COLUMN -->
@@ -244,11 +240,11 @@
 
       <!-- GALLERY IMAGES -->
       <div class="gallery">
-        <img class="reveal" src="Image14.png" alt="Metamorph M.O.N.A process frame 1" />
-        <img class="reveal" src="Image20_000.png" alt="Metamorph M.O.N.A process frame 2" />
-        <img class="reveal" src="Image27.png" alt="Metamorph M.O.N.A process frame 3" />
-        <img class="reveal" src="Image36.png" alt="Metamorph M.O.N.A process frame 4" />
-        <img class="reveal" src="Image38.png" alt="Metamorph M.O.N.A process frame 5" />
+        <img class="reveal" src="../assets/projects/metamorph-mona/Image14.png" alt="Metamorph M.O.N.A process frame 1" />
+        <img class="reveal" src="../assets/projects/metamorph-mona/Image20_000.png" alt="Metamorph M.O.N.A process frame 2" />
+        <img class="reveal" src="../assets/projects/metamorph-mona/Image27.png" alt="Metamorph M.O.N.A process frame 3" />
+        <img class="reveal" src="../assets/projects/metamorph-mona/Image36.png" alt="Metamorph M.O.N.A process frame 4" />
+        <img class="reveal" src="../assets/projects/metamorph-mona/Image38.png" alt="Metamorph M.O.N.A process frame 5" />
       </div>
     </section>
   </main>
@@ -260,10 +256,8 @@
   </footer>
 
   <script>
-    // Year
     document.getElementById('y').textContent = new Date().getFullYear();
 
-    // Reveal on scroll
     const obs = new IntersectionObserver((entries) => {
       entries.forEach(e => {
         if (e.isIntersecting) {
