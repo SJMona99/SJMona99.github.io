@@ -120,46 +120,129 @@
 
   <!-- WORK -->
   <section id="work" class="wrap">
-    <h2>Selected Work</h2>
-    <p class="lead">A selection of installations, prototypes, and studies that merge computation, sensing, and spatial experience.</p>
-    <div class="grid">
-      <a class="card reveal" href="projects/lubet.html">
-        <img src="assets/lubet-placeholder.jpg" alt="The Lubet kinetic installation" />
+    <h2>Work</h2>
+
+    <!-- Category filter -->
+    <div id="filters" class="cta" style="margin:12px 0 24px">
+      <a class="btn primary" data-filter="all">All</a>
+      <a class="btn" data-filter="parametric">Parametric / Computational</a>
+      <a class="btn" data-filter="architecture">Architecture & Design</a>
+      <a class="btn" data-filter="designmorphine">DesignMorphine — Aria</a>
+      <a class="btn" data-filter="research">Research</a>
+    </div>
+
+    <div class="grid" id="projectGrid">
+      <!-- PARAMETRIC / COMPUTATIONAL -->
+      <a class="card reveal" data-cat="parametric" href="projects/nasa-marsxr/">
+        <img src="assets/projects/nasa-marsxr/cover.jpg" alt="NASA MarsXR Challenge" />
         <div class="body">
-          <h3>The Lubet — Human-in-the-Loop Kinetics</h3>
-          <p>Interactive installation translating body movement into real-time mechanical actuation (Arduino + servo arrays).</p>
-          <span class="tag">Installation</span><span class="tag">Computation</span>
+          <h3>NASA MarsXR Challenge</h3>
+          <p>Parametric + realtime environment for mission tasks in Martian analogs.</p>
+          <span class="tag">Parametric</span><span class="tag">Responsive</span>
         </div>
       </a>
 
-      <div class="card reveal">
-        <video muted loop playsinline poster="assets/facade-still.jpg" onmouseenter="this.play()" onmouseleave="this.pause()">
-          <source src="assets/facade-loop.mp4" type="video/mp4" />
-        </video>
+      <a class="card reveal" data-cat="parametric" href="projects/metamorph-mona/">
+        <img src="assets/projects/metamorph-mona/cover.jpg" alt="Metamorph M.O.N.A." />
         <div class="body">
-          <h3>Generative Façade Studies</h3>
-          <p>Parametric system optimized for daylight, material efficiency, and visual porosity (Rhino/Grasshopper).</p>
-          <span class="tag">Parametric</span><span class="tag">Optimization</span>
+          <h3>Metamorph M.O.N.A.</h3>
+          <p>Generative system exploring material intelligence and motion.</p>
+          <span class="tag">Generative</span><span class="tag">Computation</span>
         </div>
-      </div>
+      </a>
 
-      <div class="card reveal">
-        <img src="assets/vr-placeholder.jpg" alt="VR spatial narrative" />
+      <a class="card reveal" data-cat="parametric" href="projects/lubet/">
+        <img src="assets/projects/lubet/cover.jpg" alt="Lubet" />
         <div class="body">
-          <h3>VR Spatial Narrative</h3>
-          <p>Unreal Engine walkthrough exploring light, scale, and acoustic atmosphere in responsive space.</p>
-          <span class="tag">Unreal</span><span class="tag">VR</span>
+          <h3>Lubet</h3>
+          <p>Interactive kinetic installation—body motion to mechanical actuation.</p>
+          <span class="tag">Installation</span><span class="tag">Arduino</span>
         </div>
-      </div>
+      </a>
 
-      <div class="card reveal media">
-        <img src="assets/research-strip.jpg" alt="Research collage" />
+      <a class="card reveal" data-cat="parametric" href="projects/schwarz-diamond/">
+        <img src="assets/projects/schwarz-diamond/cover.jpg" alt="Schwarz Diamond" />
+        <div class="body">
+          <h3>Schwarz Diamond</h3>
+          <p>Parametric morphology study with structural logic.</p>
+          <span class="tag">Parametric</span>
+        </div>
+      </a>
+
+      <a class="card reveal" data-cat="parametric" href="projects/polar-plotter/">
+        <img src="assets/projects/polar-plotter/cover.jpg" alt="Polar Plotter" />
+        <div class="body">
+          <h3>Polar Plotter</h3>
+          <p>Custom plotting and motion control for responsive graphic output.</p>
+          <span class="tag">Fabrication</span>
+        </div>
+      </a>
+
+      <a class="card reveal" data-cat="parametric" href="projects/flower-ball/">
+        <img src="assets/projects/flower-ball/cover.jpg" alt="Flower Ball" />
+        <div class="body">
+          <h3>Flower Ball</h3>
+          <p>Generative form and assembly sequence driven by data inputs.</p>
+          <span class="tag">Generative</span>
+        </div>
+      </a>
+
+      <!-- ARCHITECTURE & DESIGN -->
+      <a class="card reveal" data-cat="architecture" href="projects/ash-hennebery-eddy/">
+        <img src="assets/projects/ash-hennebery-eddy/cover.jpg" alt="ASH + Hennebery Eddy" />
+        <div class="body">
+          <h3>ASH + Hennebery Eddy Architects</h3>
+          <p>Architecture and visualization set—concept, modeling, and rendering.</p>
+          <span class="tag">Architecture</span>
+        </div>
+      </a>
+
+      <a class="card reveal" data-cat="architecture" href="projects/library/">
+        <img src="assets/projects/library/cover.jpg" alt="Library" />
+        <div class="body">
+          <h3>Library</h3>
+          <p>Programmatic study with daylight, circulation, and spatial sequencing.</p>
+          <span class="tag">Architecture</span>
+        </div>
+      </a>
+
+      <a class="card reveal" data-cat="architecture" href="projects/drawings/">
+        <img src="assets/projects/drawings/cover.jpg" alt="Drawings" />
+        <div class="body">
+          <h3>Drawings</h3>
+          <p>Selected diagrams, axons, and visual studies.</p>
+          <span class="tag">Representation</span>
+        </div>
+      </a>
+
+      <a class="card reveal" data-cat="architecture" href="projects/others/">
+        <img src="assets/projects/others/cover.jpg" alt="Others" />
+        <div class="body">
+          <h3>Others</h3>
+          <p>Additional architectural and design explorations.</p>
+          <span class="tag">Architecture</span>
+        </div>
+      </a>
+
+      <!-- DESIGNMORPHINE — ARIA -->
+      <a class="card reveal" data-cat="designmorphine" href="projects/aria/">
+        <img src="assets/projects/aria/cover.jpg" alt="Aria — DesignMorphine" />
+        <div class="body">
+          <h3>Aria — DesignMorphine</h3>
+          <p>Character + cinematic world-building with Unreal/Blender pipeline.</p>
+          <span class="tag">Cinematic</span><span class="tag">Unreal</span>
+        </div>
+      </a>
+
+      <!-- RESEARCH -->
+      <a class="card reveal" data-cat="research" href="research/">
+        <img src="assets/research/cover.jpg" alt="Responsive Route Research" />
         <div class="body">
           <h3>Responsive Route — Research</h3>
-          <p>Investigating Emotion AI and affective computing to enable spaces that read biometrics and adapt material behavior.</p>
-          <span class="tag">Research</span><span class="tag">Affective Computing</span><span class="tag">Sensors</span>
+          <p>Emotion AI + sensors + material behavior: methods, studies, and results.</p>
+          <span class="tag">Affective Computing</span><span class="tag">Research</span>
         </div>
-      </div>
+      </a>
     </div>
   </section>
 
@@ -215,7 +298,7 @@
     <h2>Contact</h2>
     <div class="about">
       <div class="box reveal">
-        <p>Email: <a href="mailto:youremail@example.com">youremail@example.com</a></p>
+        <p>Email: <a href="mailto:sjmona99@gmail.com">sjmona99@gmail.com</a></p>
         <form action="https://formspree.io/f/your-id" method="POST" class="contact-form" style="display:grid;gap:12px;max-width:520px">
           <label>Name <input type="text" name="name" required style="width:100%;padding:12px;border-radius:12px;border:1px solid var(--line);background:#0e0f13;color:var(--ink)"></label>
           <label>Email <input type="email" name="email" required style="width:100%;padding:12px;border-radius:12px;border:1px solid var(--line);background:#0e0f13;color:var(--ink)"></label>
@@ -238,12 +321,32 @@
 
   <script>
     // Year
-    document.getElementById('y').textContent=new Date().getFullYear();
+    document.getElementById('y').textContent = new Date().getFullYear();
+
     // Reveal on scroll
-    const obs=new IntersectionObserver((entries)=>{
-      entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('show'); obs.unobserve(e.target); } });
-    },{threshold:.15});
-    document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('show');
+          obs.unobserve(e.target);
+        }
+      });
+    }, { threshold: .15 });
+    document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+    // Category filter
+    const filterBtns = document.querySelectorAll('#filters .btn');
+    const cards = document.querySelectorAll('#projectGrid .card');
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterBtns.forEach(b => b.classList.remove('primary'));
+        btn.classList.add('primary');
+        const f = btn.dataset.filter;
+        cards.forEach(c => {
+          c.style.display = (f === 'all' || c.dataset.cat === f) ? '' : 'none';
+        });
+      });
+    });
   </script>
 </body>
 </html>
