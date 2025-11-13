@@ -7,6 +7,8 @@
   <link rel="stylesheet" href="../styles.css" />
 
   <style>
+    /* Page-specific tweaks for Metamorph */
+
     .meta-hero {
       position: relative;
       min-height: 70vh;
@@ -15,21 +17,26 @@
       overflow: hidden;
     }
 
-    .meta-hero .wrap { position: relative; z-index: 2; }
+    .meta-hero .wrap {
+      position: relative;
+      z-index: 2;
+    }
 
     .meta-hero h1 {
       font-size: clamp(2.4rem, 4vw, 3.4rem);
       margin-bottom: 0.4em;
     }
 
-    .meta-hero .lead { max-width: 720px; }
+    .meta-hero .lead {
+      max-width: 720px;
+    }
 
     .hero-covers {
       position: absolute;
       inset: 0;
       z-index: 1;
       pointer-events: none;
-      opacity: 0.25;
+      opacity: 0.22;
     }
 
     .hero-cover {
@@ -42,11 +49,28 @@
       transition: opacity 1.6s ease;
     }
 
-    .hero-cover.show { opacity: 1; }
+    .hero-cover.show {
+      opacity: 1;
+    }
 
-    .section { padding: 64px 0; }
-    .section h2 { font-size: 1.4rem; margin-bottom: 0.5em; }
-    .section p { max-width: 840px; }
+    .section {
+      padding: 64px 0;
+    }
+
+    .section h2 {
+      font-size: 1.4rem;
+      margin-bottom: 0.5em;
+    }
+
+    .section p {
+      max-width: 840px;
+    }
+
+    .section .note {
+      margin-top: 12px;
+      font-size: 0.9rem;
+      opacity: 0.8;
+    }
 
     .gallery-grid {
       display: grid;
@@ -60,138 +84,216 @@
       height: 100%;
       object-fit: cover;
       border-radius: 16px;
-      border: 1px solid rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.06);
     }
 
+    /* simple layout choices */
     .gallery-grid img:nth-child(1),
     .gallery-grid img:nth-child(2),
-    .gallery-grid img:nth-child(3) { grid-column: span 4; }
+    .gallery-grid img:nth-child(3) {
+      grid-column: span 4;
+    }
 
     .gallery-grid img:nth-child(4),
-    .gallery-grid img:nth-child(5),
-    .gallery-grid img:nth-child(6) { grid-column: span 6; }
+    .gallery-grid img:nth-child(5) {
+      grid-column: span 6;
+    }
 
+    .gallery-grid img:nth-child(6),
     .gallery-grid img:nth-child(7),
-    .gallery-grid img:nth-child(8),
-    .gallery-grid img:nth-child(9),
-    .gallery-grid img:nth-child(10),
-    .gallery-grid img:nth-child(11),
-    .gallery-grid img:nth-child(12),
-    .gallery-grid img:nth-child(13) { grid-column: span 4; }
+    .gallery-grid img:nth-child(8) {
+      grid-column: span 4;
+    }
 
-    @media(max-width:900px){
-      .gallery-grid { grid-template-columns: repeat(6,1fr); }
-      .gallery-grid img { grid-column: span 6 !important; }
+    @media (max-width: 900px) {
+      .meta-hero {
+        padding-top: 80px;
+        padding-bottom: 32px;
+      }
+      .hero-covers {
+        opacity: 0.35;
+      }
+      .gallery-grid {
+        grid-template-columns: repeat(6, 1fr);
+      }
+      .gallery-grid img {
+        grid-column: span 6 !important;
+      }
     }
   </style>
 </head>
-
 <body>
-<header>
-  <div class="wrap bar">
-    <div class="logo">Mona Sajedi</div>
-    <nav><a class="pill" href="../index.html#work">← Back to Work</a></nav>
-  </div>
-</header>
-
-<!-- HERO -->
-<section class="meta-hero">
-  <div class="wrap">
-    <h1 class="reveal">Metamorph M.O.N.A.</h1>
-    <p class="lead reveal">
-      A generative composition built from the letters of my name, exploring material intelligence,
-      motion, and atmosphere through Grasshopper-based forms and controlled color palettes.
-    </p>
-  </div>
-
-  <div class="hero-covers">
-    <img src="../assets/projects/metamorph-mona/cover1.png" class="hero-cover show" />
-    <img src="../assets/projects/metamorph-mona/cover2.png" class="hero-cover" />
-  </div>
-</section>
-
-<!-- TEXT 1 -->
-<section class="section">
-  <div class="wrap">
-    <h2>Concept & Letter Morphology</h2>
-    <p>
-      The models in this work were created using letters of the English alphabet in Grasshopper.
-      Four letters were used to form this model. By applying a limited palette of cool grays,
-      complemented by selective blue and warm tones, the piece gains depth and atmosphere.
-    </p>
-    <p>
-      The oblique forms convey a sense of dynamism and motion, emphasizing fluidity and transformation.
-      The model consists of the letters M, O, N, and A — representing my name, Mona.
-    </p>
-    <p>
-      My background is not in architecture. However, my curiosity and passion for this field led me
-      to explore it through design. This concept reflects my evolving interest, expressing movement,
-      creativity, and direction in this artistic journey.
-    </p>
-  </div>
-</section>
-
-<!-- TEXT 2 -->
-<section class="section">
-  <div class="wrap">
-    <h2>Atmosphere, Motion & Making Space</h2>
-    <p>
-      Making space by playing with visual elements and color harmony to create an eerie environment.
-      The reshaped sharp letters indicate dynamism, mobility, and reform.
-    </p>
-    <p class="note">
-      Summer 2022 — Hyper Visual Compositions workshop at DigitalFutures.<br>
-      Software: Grasshopper, Rhino, Twinmotion.
-    </p>
-  </div>
-</section>
-
-<!-- GALLERY -->
-<section class="section">
-  <div class="wrap">
-    <h2>Visual Exploration</h2>
-
-    <div class="gallery-grid">
-
-      <img src="../assets/projects/metamorph-mona/21.jpg" />
-
-      <img src="../assets/projects/metamorph-mona/Image14.png" />
-      <img src="../assets/projects/metamorph-mona/Image20_000.png" />
-      <img src="../assets/projects/metamorph-mona/Image27.png" />
-      <img src="../assets/projects/metamorph-mona/Image36.png" />
-      <img src="../assets/projects/metamorph-mona/Image38.png" />
-
-      <img src="../assets/projects/metamorph-mona/Image44.png" />
-      <img src="../assets/projects/metamorph-mona/Image45.png" />
-      <img src="../assets/projects/metamorph-mona/Image47.png" />
-      <img src="../assets/projects/metamorph-mona/Image54.png" />
-
-      <!-- these 3 now use URL-encoded spaces/parentheses -->
-      <img src="../assets/projects/metamorph-mona/Screenshot%20%28649%29.png" />
-      <img src="../assets/projects/metamorph-mona/Screenshot%202025-11-08%20214431.png" />
-      <img src="../assets/projects/metamorph-mona/Screenshot%202025-11-08%20214710.png" />
-
+  <header>
+    <div class="wrap bar">
+      <div class="logo">Mona Sajedi</div>
+      <nav>
+        <a class="pill" href="../index.html#work">← Back to Work</a>
+      </nav>
     </div>
-  </div>
-</section>
+  </header>
 
-<footer>
-  <div class="wrap">
-    © <span id="y"></span> Mona Sajedi — Metamorph M.O.N.A.
-  </div>
-</footer>
+  <!-- HERO -->
+  <section class="meta-hero">
+    <div class="wrap">
+      <h1 class="reveal">Metamorph M.O.N.A.</h1>
+      <p class="lead reveal">
+        A generative composition built from the letters of my name, exploring material intelligence,
+        motion, and atmosphere through Grasshopper-based forms, controlled color palettes, and
+        immersive light reflections.
+      </p>
+    </div>
 
-<script>
-  document.getElementById('y').textContent = new Date().getFullYear();
+    <div class="hero-covers">
+      <img
+        src="../assets/projects/metamorph-mona/cover1.png"
+        alt="Metamorph M.O.N.A. cover image 1"
+        class="hero-cover show"
+      />
+      <img
+        src="../assets/projects/metamorph-mona/cover2.png"
+        alt="Metamorph M.O.N.A. cover image 2"
+        class="hero-cover"
+      />
+    </div>
+  </section>
 
-  const covers = document.querySelectorAll('.hero-cover');
-  let i = 0;
-  setInterval(() => {
-    covers[i].classList.remove('show');
-    i = (i + 1) % covers.length;
-    covers[i].classList.add('show');
-  }, 5000);
-</script>
+  <!-- TEXT SECTION 1 -->
+  <section class="section">
+    <div class="wrap">
+      <h2>Concept &amp; Letter-Based Morphology</h2>
+      <p>
+        The models in this work were created using letters of the English alphabet in Grasshopper.
+        Four letters were used to form this model. By applying a limited palette of cool grays
+        complemented by selective blue and warm tones, the piece gains both depth and atmosphere.
+        This restrained use of color creates a professional, cohesive, and immersive environment.
+      </p>
+      <p>
+        The oblique forms convey a sense of dynamism and motion, emphasizing fluidity and
+        transformation throughout the composition. The model consists of the letters M, O, N, and A
+        representing my name, Mona.
+      </p>
+      <p>
+        My background is not in architecture. However, my curiosity and passion for this field led me
+        to explore it through design. This concept reflects my evolving interest, expressing the strong
+        sense of movement, creativity, and direction that guide me in this new artistic journey.
+      </p>
+    </div>
+  </section>
 
+  <!-- TEXT SECTION 2 -->
+  <section class="section">
+    <div class="wrap">
+      <h2>Atmosphere, Motion &amp; Making Space</h2>
+      <p>
+        Making space by playing with visual elements and harmony of colors to create an eerie
+        environment. The reshaped and sharp letters indicate dynamism and mobility in the work and
+        emphasize the seriousness of reform.
+      </p>
+      <p class="note">
+        Summer 2022 — Hyper Visual Compositions workshop at DigitalFutures.  
+        Modelling software: Grasshopper, Rhino, and Twinmotion.
+      </p>
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+  <section class="section">
+    <div class="wrap">
+      <h2>Visual Exploration</h2>
+      <p>
+        A selection of stills from the Metamorph M.O.N.A. sequence, focusing on reflections, material
+        behavior, and spatial atmosphere.
+      </p>
+
+      <div class="gallery-grid">
+        <img src="../assets/projects/metamorph-mona/21.jpg"
+             alt="Metamorph M.O.N.A. – initial composition"
+             class="reveal" />
+
+        <img src="../assets/projects/metamorph-mona/Image14.png"
+             alt="Metamorph M.O.N.A. – cinematic frame"
+             class="reveal" />
+
+        <img src="../assets/projects/metamorph-mona/Image20_000.png"
+             alt="Metamorph M.O.N.A. – dynamic light study"
+             class="reveal" />
+
+        <img src="../assets/projects/metamorph-mona/Image27.png"
+             alt="Metamorph M.O.N.A. – oblique reflections"
+             class="reveal" />
+
+        <img src="../assets/projects/metamorph-mona/Image36.png"
+             alt="Metamorph M.O.N.A. – composition variation"
+             class="reveal" />
+
+        <img src="../assets/projects/metamorph-mona/Image38.png"
+             alt="Metamorph M.O.N.A. – water surface detail"
+             class="reveal" />
+
+        <img src="../assets/projects/metamorph-mona/Image44.png"
+             alt="Metamorph M.O.N.A. – oblique forms and reflections"
+             class="reveal" />
+
+        <img src="../assets/projects/metamorph-mona/Image45.png"
+             alt="Metamorph M.O.N.A. – dynamic composition"
+             class="reveal" />
+
+        <img src="../assets/projects/metamorph-mona/Image47.png"
+             alt="Metamorph M.O.N.A. – close-up of material intersections"
+             class="reveal" />
+
+        <img src="../assets/projects/metamorph-mona/Image54.png"
+             alt="Metamorph M.O.N.A. – light and shadow study"
+             class="reveal" />
+
+        <img src="../assets/projects/metamorph-mona/Screenshot%20(649).png"
+             alt="Metamorph M.O.N.A. – reflection detail"
+             class="reveal" />
+
+        <img src="../assets/projects/metamorph-mona/Screenshot%202025-11-08%20214431.png"
+             alt="Metamorph M.O.N.A. – cinematic frame 1"
+             class="reveal" />
+
+        <img src="../assets/projects/metamorph-mona/Screenshot%202025-11-08%20214710.png"
+             alt="Metamorph M.O.N.A. – cinematic frame 2"
+             class="reveal" />
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">
+      © <span id="y"></span> Mona Sajedi — Metamorph M.O.N.A.
+    </div>
+  </footer>
+
+  <script>
+    // Year
+    document.getElementById('y').textContent = new Date().getFullYear();
+
+    // Reveal on scroll (same behavior as the main page)
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('show');
+          obs.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.15 });
+
+    document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+    // simple cross-fade between the two cover images
+    const covers = document.querySelectorAll('.hero-cover');
+    let current = 0;
+
+    if (covers.length > 1) {
+      setInterval(() => {
+        covers[current].classList.remove('show');
+        current = (current + 1) % covers.length;
+        covers[current].classList.add('show');
+      }, 5000); // 5 seconds per image
+    }
+  </script>
 </body>
 </html>
