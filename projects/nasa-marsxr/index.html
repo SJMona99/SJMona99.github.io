@@ -1,1 +1,118 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>MarsXR Challenge – Mona Sajedi</title>
+  <meta name="description" content="NASA MarsXR Challenge project by Mona Sajedi – immersive design, simulation workflows, and interactive environment development.">
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet"/>
+
+  <style>
+    :root {
+      --bg:#0b0b0c; --ink:#e8e9eb; --muted:#a9adb7; --accent:#8ea6ff; 
+      --card:#121215; --line:#1b1b1f; --radius:22px; --max:1200px;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;background:var(--bg);color:var(--ink);
+         font-family:"Plus Jakarta Sans",Inter,system-ui;}
+    a{color:var(--accent);text-decoration:none}
+    .wrap{max-width:var(--max);margin:0 auto;padding:24px}
+
+    header{padding:20px 0;border-bottom:1px solid var(--line);}
+    .back{display:inline-block;padding:8px 14px;border:1px solid var(--line);
+          border-radius:12px;color:var(--ink);}
+
+    h1{font-size:2.4rem;margin-top:18px;}
+    .lead{color:#c9ced8;max-width:850px;font-size:1.1rem;}
+
+    .gallery{margin-top:40px;display:grid;gap:18px;
+             grid-template-columns:repeat(auto-fill,minmax(300px,1fr));}
+    .gallery img{width:100%;border-radius:var(--radius);
+                 border:1px solid var(--line);object-fit:cover;}
+
+    .section{margin-top:60px;}
+    footer{margin-top:80px;padding:40px 0;border-top:1px solid var(--line);
+           text-align:center;color:var(--muted);}
+
+    /* reveal animation */
+    .reveal{opacity:0;transform:translateY(16px);transition:all .6s ease;}
+    .reveal.show{opacity:1;transform:none;}
+  </style>
+</head>
+
+<body>
+
+<header class="wrap">
+  <a class="back" href="/#work">← Back to Work</a>
+</header>
+
+<div class="wrap">
+  <h1 class="reveal">NASA MarsXR Challenge</h1>
+  <p class="lead reveal">
+    A collaborative research and prototyping project exploring immersive simulation,
+    human–space interaction, and environmental performance within NASA’s MarsXR framework.
+    This project integrates spatial UX design, real-time visualization, and computational
+    workflow development for extraterrestrial architectural scenarios.
+  </p>
+
+  <!-- MAIN COVER IMAGE -->
+  <img src="../../assets/projects/nasa-marsxr/cover.jpg"
+       alt="MarsXR main image" class="reveal"
+       style="width:100%;margin-top:40px;border-radius:var(--radius);border:1px solid var(--line);" />
+
+  <!-- SUBSECTION -->
+  <div class="section reveal">
+    <h2>Overview</h2>
+    <p>
+      This project was developed for the <strong>NASA MarsXR Challenge</strong> — an initiative
+      focused on creating highly detailed immersive simulations of Martian habitats, EVA scenarios,
+      and human–environment interactions. My contribution focused on:
+    </p>
+
+    <ul>
+      <li>Designing interactive spatial systems within the MarsXR platform</li>
+      <li>Generating procedural environments using computational methods</li>
+      <li>Developing simulation-ready assets optimized for real-time performance</li>
+      <li>Exploring user interaction and behavioral response in extreme environments</li>
+    </ul>
+  </div>
+
+  <!-- GALLERY -->
+  <div class="section">
+    <h2 class="reveal">Project Gallery</h2>
+    <div class="gallery">
+      <img class="reveal" src="../../assets/projects/nasa-marsxr/2.jpg" alt="">
+      <img class="reveal" src="../../assets/projects/nasa-marsxr/3.jpg" alt="">
+      <img class="reveal" src="../../assets/projects/nasa-marsxr/4.jpg" alt="">
+      <img class="reveal" src="../../assets/projects/nasa-marsxr/5.png" alt="">
+      <img class="reveal" src="../../assets/projects/nasa-marsxr/6.png" alt="">
+      <img class="reveal" src="../../assets/projects/nasa-marsxr/7.png" alt="">
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  © <span id="year"></span> Mona Sajedi – MarsXR Project
+</footer>
+
+<script>
+  // year
+  document.getElementById("year").textContent = new Date().getFullYear();
+
+  // reveal on scroll animation
+  const obs = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        e.target.classList.add("show");
+        obs.unobserve(e.target);
+      }
+    });
+  }, {threshold: 0.1});
+  document.querySelectorAll(".reveal").forEach(el=>obs.observe(el));
+</script>
+
+</body>
+</html>
 
