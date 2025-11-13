@@ -1,274 +1,130 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Metamorph M.O.N.A. — Hyper Visual Composition</title>
-  <meta name="description" content="Metamorph M.O.N.A. — letterforms as spatial prototypes in motion, exploring atmosphere, reflection, and responsive geometry." />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Metamorph M.O.N.A</title>
+  <link rel="stylesheet" href="../../styles.css">
 
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet" />
-
+  <!-- Page-specific styles for the 2-image fading cover -->
   <style>
-    :root{
-      --bg:#0b0b0c;
-      --ink:#e8e9eb;
-      --muted:#a9adb7;
-      --accent:#8ea6ff;
-      --card:#121215;
-      --line:#1b1b1f;
-      --max:1200px;
-      --radius:22px;
+    .mona-hero {
+      position: relative;
+      width: 100%;
+      max-width: 1100px;
+      margin: 40px auto 32px;
+      aspect-ratio: 16/9;
+      border-radius: var(--radius, 22px);
+      overflow: hidden;
+      border: 1px solid var(--line, #1b1b1f);
     }
-    *{box-sizing:border-box;margin:0;padding:0}
-    html{scroll-behavior:smooth}
-    body{
-      margin:0;
-      background:radial-gradient(circle at 0 0,#161623 0,#050509 52%,#050509 100%);
-      color:var(--ink);
-      font-family:"Plus Jakarta Sans",Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+    .mona-hero img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0;
+      animation: monaFade 10s infinite ease-in-out;
     }
-    a{color:inherit}
-    .wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
-
-    header{
-      position:fixed;
-      inset:0 0 auto 0;
-      height:64px;
-      display:flex;
-      align-items:center;
-      z-index:40;
-      backdrop-filter:saturate(130%) blur(10px);
-      background:linear-gradient(to bottom,rgba(5,5,10,.85),rgba(5,5,10,.5),transparent);
-      border-bottom:1px solid rgba(40,40,50,.7);
+    .mona-hero img:nth-child(1) {
+      animation-delay: 0s;
     }
-    header .wrap{display:flex;align-items:center;justify-content:space-between}
-    .back{
-      display:inline-flex;
-      align-items:center;
-      gap:6px;
-      font-size:.85rem;
-      opacity:.85;
-      text-decoration:none;
-      padding:6px 12px;
-      border-radius:999px;
-      border:1px solid var(--line);
-      background:rgba(10,10,16,.8);
-    }
-    .back:hover{opacity:1;border-color:#2a2a31}
-
-    main{padding-top:92px;padding-bottom:72px}
-
-    h1{
-      font-size:clamp(2.1rem,4vw,3.4rem);
-      line-height:1.05;
-      margin-bottom:10px;
-    }
-    h2{
-      font-size:clamp(1.4rem,2.4vw,2rem);
-      margin:40px 0 14px;
-    }
-    p.lead{
-      color:#cfd3db;
-      max-width:780px;
-      margin-bottom:32px;
-    }
-    p{line-height:1.6;margin-bottom:14px;color:#d3d7df}
-    strong{font-weight:600}
-
-    .kicker{
-      text-transform:uppercase;
-      letter-spacing:.18em;
-      color:var(--muted);
-      font-size:.8rem;
+    .mona-hero img:nth-child(2) {
+      animation-delay: 5s;
     }
 
-    .project-intro{
-      margin-top:18px;
+    @keyframes monaFade {
+      0%   { opacity: 1; }
+      40%  { opacity: 1; }
+      50%  { opacity: 0; }
+      90%  { opacity: 0; }
+      100% { opacity: 1; }
     }
 
-    .project-layout{
-      display:grid;
-      grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);
-      gap:32px;
-      align-items:start;
+    /* simple gallery grid */
+    .mona-gallery {
+      display: grid;
+      gap: 22px;
     }
 
-    .hero-pair{
-      display:grid;
-      grid-template-columns:1fr;
-      gap:16px;
-    }
-    .hero-pair img{
-      width:100%;
-      display:block;
-      border-radius:var(--radius);
-      border:1px solid rgba(255,255,255,.04);
-      box-shadow:0 24px 60px rgba(0,0,0,.8);
-      object-fit:cover;
-    }
-
-    .meta-block{
-      background:radial-gradient(circle at 0 0,#181828 0,#101018 45%,#101018 100%);
-      border-radius:var(--radius);
-      border:1px solid rgba(255,255,255,.06);
-      padding:20px 20px 18px;
-      font-size:.9rem;
-    }
-    .meta-block h3{
-      margin:0 0 6px;
-      font-size:.9rem;
-      text-transform:uppercase;
-      letter-spacing:.18em;
-      color:var(--muted);
-    }
-    .meta-block p{margin-bottom:6px}
-    .meta-block p.small{font-size:.85rem;color:var(--muted)}
-
-    .gallery{
-      margin-top:24px;
-      display:grid;
-      grid-template-columns:repeat(3,minmax(0,1fr));
-      gap:16px;
-    }
-    .gallery img{
-      width:100%;
-      display:block;
-      border-radius:18px;
-      border:1px solid rgba(255,255,255,.04);
-      object-fit:cover;
-      min-height:160px;
-    }
-
-    footer{
-      border-top:1px solid var(--line);
-      padding:24px 0 40px;
-      color:#a0a5b0;
-      font-size:.85rem;
-      text-align:center;
-    }
-
-    .reveal{opacity:0;transform:translateY(18px);transition:all .6s ease}
-    .reveal.show{opacity:1;transform:none}
-
-    @media (max-width:960px){
-      .project-layout{
-        grid-template-columns:1fr;
+    @media (min-width: 800px) {
+      .mona-gallery {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
       }
     }
-    @media (max-width:720px){
-      .gallery{
-        grid-template-columns:repeat(2,minmax(0,1fr));
-      }
-    }
-    @media (max-width:520px){
-      .gallery{
-        grid-template-columns:1fr;
-      }
+
+    .mona-gallery img {
+      width: 100%;
+      display: block;
+      border-radius: var(--radius, 22px);
+      border: 1px solid var(--line, #1b1b1f);
+      object-fit: cover;
     }
   </style>
 </head>
+
 <body>
+<header class="wrap">
+  <a class="back" href="../..#work">← Back to Work</a>
+</header>
 
-  <header>
-    <div class="wrap">
-      <!-- file lives in /projects, so go back to root -->
-      <a class="back" href="../index.html#work">← Back to Work</a>
-    </div>
-  </header>
+<div class="wrap">
 
-  <main>
-    <section class="wrap">
-      <span class="kicker reveal">Hyper Visual Composition</span>
-      <h1 class="reveal">Metamorph M.O.N.A.</h1>
-      <p class="lead reveal">
-        Letterforms transformed into spatial prototypes — a reflective landscape where typography,
-        motion, and atmosphere merge.
-      </p>
-    </section>
+  <h1 class="reveal">Metamorph M.O.N.A</h1>
 
-    <section class="wrap">
-      <div class="project-layout">
-        <!-- HERO IMAGES -->
-        <div class="hero-pair reveal">
-          <img src="../assets/projects/metamorph-mona/cover1.png" alt="Metamorph M.O.N.A main composition" />
-          <img src="../assets/projects/metamorph-mona/cover2.png" alt="Metamorph M.O.N.A alternate composition" />
-        </div>
+  <!-- 2-image fading cover -->
+  <div class="mona-hero reveal">
+    <img src="../../assets/projects/metamorph-mona/cover1.png" alt="Metamorph M.O.N.A cover 1">
+    <img src="../../assets/projects/metamorph-mona/cover2.png" alt="Metamorph M.O.N.A cover 2">
+  </div>
 
-        <!-- TEXT COLUMN -->
-        <div class="project-intro">
-          <div class="meta-block reveal">
-            <h3>Concept</h3>
-            <p>
-              The models in this work were created using letters of the English alphabet in Grasshopper.
-              Four letters — <strong>M</strong>, <strong>O</strong>, <strong>N</strong>, and <strong>A</strong> —
-              form the base geometry, representing my name, <strong>Mona</strong>.
-            </p>
-            <p>
-              By applying a limited palette of cool grays, complemented by selective blue and warm tones,
-              the piece gains both depth and atmosphere. This restrained use of color creates a professional,
-              cohesive, and immersive environment.
-            </p>
-            <p>
-              The oblique forms convey a sense of dynamism and motion, emphasizing fluidity and transformation
-              throughout the composition. The reshaped, sharp letters indicate mobility and highlight a
-              seriousness of reform.
-            </p>
-            <p>
-              My background is not in architecture; however, curiosity and passion for this field led me to
-              explore it through design. <strong>Metamorph M.O.N.A.</strong> reflects my evolving interest,
-              expressing the strong sense of movement, creativity, and direction that guide me in this new
-              artistic journey.
-            </p>
-            <p class="small" style="margin-top:10px;">
-              Summer 2022 — <strong>Hyper Visual Compositions</strong> workshop at DigitalFUTURES<br>
-              Modelling software: Grasshopper, Rhino, Twinmotion
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
+  <p class="lead reveal">
+    The models in this work were created using letters of the English alphabet in Grasshopper. 
+    Four letters were used to form this model. By applying a limited palette of cool grays 
+    complemented by selective blue and warm tones, the piece gains both depth and atmosphere. 
+    This restrained use of color creates a professional, cohesive, and immersive environment.
+  </p>
 
-    <section class="wrap">
-      <h2 class="reveal">Process &amp; Variations</h2>
-      <p class="reveal" style="max-width:760px;margin-bottom:18px;">
-        Making space by playing with visual elements and the harmony of colors to create an
-        eerie, reflective environment. These frames capture different stages of the letterforms
-        as they shift between object, landscape, and light.
-      </p>
+  <p class="reveal">
+    The oblique forms convey a sense of dynamism and motion, emphasizing fluidity and transformation 
+    throughout the composition. The model consists of the letters M, O, N, and A — representing my name, Mona.
+  </p>
 
-      <!-- GALLERY IMAGES -->
-      <div class="gallery">
-        <img class="reveal" src="../assets/projects/metamorph-mona/Image14.png" alt="Metamorph M.O.N.A process frame 1" />
-        <img class="reveal" src="../assets/projects/metamorph-mona/Image20_000.png" alt="Metamorph M.O.N.A process frame 2" />
-        <img class="reveal" src="../assets/projects/metamorph-mona/Image27.png" alt="Metamorph M.O.N.A process frame 3" />
-        <img class="reveal" src="../assets/projects/metamorph-mona/Image36.png" alt="Metamorph M.O.N.A process frame 4" />
-        <img class="reveal" src="../assets/projects/metamorph-mona/Image38.png" alt="Metamorph M.O.N.A process frame 5" />
-      </div>
-    </section>
-  </main>
+  <p class="reveal">
+    My background is not in architecture. However, my curiosity and passion for this field led me to explore 
+    it through design. This concept reflects my evolving interest, expressing the strong sense of movement, 
+    creativity, and direction that guide me in this new artistic journey.
+  </p>
 
-  <footer>
-    <div class="wrap">
-      © <span id="y"></span> Mona Sajedi — Metamorph M.O.N.A.
-    </div>
-  </footer>
+  <p class="reveal">
+    Making space by playing with visual elements and harmony of colors to create an eerie environment.  
+    The reshaped and sharp letters indicate dynamism and mobility in the work and emphasize the seriousness of reform.
+  </p>
 
-  <script>
-    document.getElementById('y').textContent = new Date().getFullYear();
+  <p class="reveal">
+    <em>Summer 2022 – Hyper Visual Compositions workshop at Digital Futures.<br>
+    Modeling Software: Grasshopper, Rhino, and Twinmotion.</em>
+  </p>
 
-    const obs = new IntersectionObserver((entries) => {
-      entries.forEach(e => {
-        if (e.isIntersecting) {
-          e.target.classList.add('show');
-          obs.unobserve(e.target);
-        }
-      });
-    }, { threshold: .15 });
+  <!-- GALLERY (all the other images) -->
+  <div class="mona-gallery reveal" style="margin-top:40px;">
 
-    document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
-  </script>
+    <img src="../../assets/projects/metamorph-mona/21.jpg" alt="Metamorph composition close-up">
 
+    <img src="../../assets/projects/metamorph-mona/Image44.png" alt="Metamorph Image 44">
+    <img src="../../assets/projects/metamorph-mona/Image45.png" alt="Metamorph Image 45">
+    <img src="../../assets/projects/metamorph-mona/Image47.png" alt="Metamorph Image 47">
+    <img src="../../assets/projects/metamorph-mona/Image54.png" alt="Metamorph Image 54">
+
+    <img src="../../assets/projects/metamorph-mona/Screenshot (649).png" alt="Metamorph Screenshot 649">
+    <img src="../../assets/projects/metamorph-mona/Screenshot 2025-11-08 214431.png" alt="Metamorph Screenshot A">
+    <img src="../../assets/projects/metamorph-mona/Screenshot 2025-11-08 214710.png" alt="Metamorph Screenshot B">
+
+  </div>
+
+</div>
+
+<script src="../../script.js"></script>
 </body>
 </html>
