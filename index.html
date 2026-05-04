@@ -16,7 +16,7 @@
     }
     *{box-sizing:border-box}
     html{scroll-behavior:smooth}
-    body{margin:0;background:var(--bg);color:var(--ink);font-family:"Plus Jakarta Sans",Inter,system-ui,-apple-system,Segoe UI,Roboto, Arial,sans-serif}
+    body{margin:0;background:var(--bg);color:var(--ink);font-family:"Plus Jakarta Sans",Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
     a{color:inherit}
     .wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
 
@@ -24,9 +24,9 @@
     header{position:fixed;inset:0 0 auto 0;height:64px;display:flex;align-items:center;z-index:50;
       backdrop-filter:saturate(120%) blur(8px)}
     header .bar{display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line);
-      background:rgba(11,11,12,.45);height:64px}
-    .logo{font-weight:800;letter-spacing:.2px}
-    nav a{opacity:.8;text-decoration:none;margin-left:18px}
+      background:rgba(11,11,12,.75);height:64px}
+    .logo{font-weight:800;letter-spacing:.2px;color:#ffffff;}
+    nav a{opacity:.8;text-decoration:none;margin-left:18px;color:#ffffff;}
     nav a:hover{opacity:1}
     .pill{border:1px solid var(--line);border-radius:999px;padding:6px 12px;font-size:.82rem;opacity:.85}
 
@@ -60,7 +60,16 @@
     .card{grid-column:span 6;background:var(--card);border:1px solid var(--line);
       border-radius:var(--radius);overflow:hidden;transition:.24s ease;display:block;text-decoration:none}
     .card:hover{transform:translateY(-4px)}
-    .card img{width:100%;height:380px;object-fit:cover;display:block}
+
+    /* Card with slideshow */
+    .card-img-wrap{position:relative;width:100%;height:380px;overflow:hidden;}
+    .card-img-wrap img{
+      position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+      opacity:0;transition:opacity 1.6s ease;display:block;
+    }
+    .card-img-wrap img.show{opacity:1;}
+    .card-img-wrap img.static{position:relative;opacity:1;}
+
     .card .body{padding:16px 18px}
     .tag{display:inline-block;border:1px solid var(--line);border-radius:999px;padding:4px 10px;margin-right:8px;
       margin-top:8px;font-size:.78rem;color:#b8bdc8}
@@ -72,7 +81,7 @@
     @media (max-width:980px){
       .grid{grid-template-columns:repeat(6,1fr)}
       .card{grid-column:span 6}
-      .card img{height:300px}
+      .card-img-wrap{height:300px}
     }
   </style>
 </head>
@@ -124,6 +133,17 @@
     <b>• Arduino / Sensors</b>
     <span>• BIM Workflows</span>
     <b>• Data-Driven Space</b>
+    <!-- duplicate for seamless loop -->
+    <span>Parametric Systems</span>
+    <b>• Emotion AI</b>
+    <span>• Generative Design</span>
+    <b>• Material Intelligence</b>
+    <span>• Interactive Installations</span>
+    <b>• Unreal / Rhino / Grasshopper / Revit</b>
+    <span>• Visualization</span>
+    <b>• Arduino / Sensors</b>
+    <span>• BIM Workflows</span>
+    <b>• Data-Driven Space</b>
   </div>
 </div>
 
@@ -135,7 +155,9 @@
 
     <!-- NASA -->
     <a class="card reveal" data-cat="parametric" href="projects/nasa-marsxr/">
-      <img src="/assets/projects/nasa-marsxr/cover.jpg" alt="NASA MarsXR Challenge" />
+      <div class="card-img-wrap">
+        <img src="/assets/projects/nasa-marsxr/cover.jpg" alt="NASA MarsXR Challenge" class="static" />
+      </div>
       <div class="body">
         <h3>NASA MarsXR Challenge</h3>
         <p>Parametric + realtime environment for mission tasks in Martian analogs.</p>
@@ -144,9 +166,12 @@
       </div>
     </a>
 
-    <!-- METAMORPH M.O.N.A. -->
+    <!-- METAMORPH M.O.N.A. — crossfade card -->
     <a class="card reveal" data-cat="parametric" href="projects/metamorph-mona.html">
-      <img src="/assets/projects/metamorph-mona/cover1.png" alt="Metamorph M.O.N.A." />
+      <div class="card-img-wrap" id="metamorphCard">
+        <img src="/assets/projects/metamorph-mona/1.png" alt="Metamorph M.O.N.A. blue" class="show" />
+        <img src="/assets/projects/metamorph-mona/2.png" alt="Metamorph M.O.N.A. golden" />
+      </div>
       <div class="body">
         <h3>Metamorph M.O.N.A.</h3>
         <p>Generative system exploring material intelligence and motion.</p>
@@ -156,21 +181,23 @@
     </a>
 
     <!-- LUBET -->
-   <a class="card reveal" data-cat="parametric" href="projects/lubet/">
-     <img src="/assets/projects/lubet/cover.jpg" alt="Lubet" />
-     <div class="body">
-       <h3>Lubet</h3>
-       <p>Interactive kinetic installation—body motion to mechanical actuation.</p>
-       <span class="tag">Installation</span>
-       <span class="tag">Arduino</span>
-     </div>
-   </a>
-
-
+    <a class="card reveal" data-cat="parametric" href="projects/lubet/">
+      <div class="card-img-wrap">
+        <img src="/assets/projects/lubet/cover.jpg" alt="Lubet" class="static" />
+      </div>
+      <div class="body">
+        <h3>Lubet</h3>
+        <p>Interactive kinetic installation — body motion to mechanical actuation.</p>
+        <span class="tag">Installation</span>
+        <span class="tag">Arduino</span>
+      </div>
+    </a>
 
     <!-- SCHWARZ DIAMOND -->
     <a class="card reveal" data-cat="parametric" href="projects/schwarz-diamond/">
-      <img src="/assets/projects/schwarz-diamond/cover.jpg" alt="Schwarz Diamond" />
+      <div class="card-img-wrap">
+        <img src="/assets/projects/schwarz-diamond/cover.jpg" alt="Schwarz Diamond" class="static" />
+      </div>
       <div class="body">
         <h3>Schwarz Diamond</h3>
         <p>Parametric morphology study with structural logic.</p>
@@ -180,7 +207,9 @@
 
     <!-- POLAR PLOTTER -->
     <a class="card reveal" data-cat="parametric" href="projects/polar-plotter/">
-      <img src="/assets/projects/polar-plotter/cover.jpg" alt="Polar Plotter" />
+      <div class="card-img-wrap">
+        <img src="/assets/projects/polar-plotter/cover.jpg" alt="Polar Plotter" class="static" />
+      </div>
       <div class="body">
         <h3>Polar Plotter</h3>
         <p>Custom plotting and motion control for responsive graphic output.</p>
@@ -190,7 +219,9 @@
 
     <!-- FLOWER BALL -->
     <a class="card reveal" data-cat="parametric" href="projects/flower-ball/">
-      <img src="/assets/projects/flower-ball/cover.jpg" alt="Flower Ball" />
+      <div class="card-img-wrap">
+        <img src="/assets/projects/flower-ball/cover.jpg" alt="Flower Ball" class="static" />
+      </div>
       <div class="body">
         <h3>Flower Ball</h3>
         <p>Generative form and assembly driven by data inputs.</p>
@@ -204,7 +235,7 @@
 <!-- FOOTER -->
 <footer>
   <div class="wrap">
-    © <span id="y"></span> Mona Sajedi — Responsive Architecture & Parametric Design
+    © <span id="y"></span> Mona Sajedi · Responsive Architecture & Parametric Design
   </div>
 </footer>
 
@@ -221,8 +252,16 @@
       }
     });
   }, { threshold: .15 });
-
   document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+  // Metamorph card crossfade
+  const cardImgs = document.querySelectorAll('#metamorphCard img');
+  let cardCurrent = 0;
+  setInterval(() => {
+    cardImgs[cardCurrent].classList.remove('show');
+    cardCurrent = (cardCurrent + 1) % cardImgs.length;
+    cardImgs[cardCurrent].classList.add('show');
+  }, 4000);
 </script>
 
 </body>
